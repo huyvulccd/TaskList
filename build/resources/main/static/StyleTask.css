@@ -1,0 +1,468 @@
+body{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+table{
+    border-collapse: collapse;
+}
+table,
+tr,
+td,
+th {
+    border: 2px solid #000 !important;
+
+}
+textarea {
+    resize: none;
+  }
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar * * {
+    margin-top: 5%;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 10px;
+}
+
+.toolbar-export {
+    display: inline;
+    background-color: rgb(104, 104, 104);
+    color: white;
+    border-radius: 5px;
+}
+
+.toolbar-newtask {
+    display: inline;
+    background-color: rgb(72, 99, 255);
+    color: white;
+    border-radius: 5px;
+    border: rgb(72, 99, 255);
+    transition-duration: 0.1s;
+}
+.toolbar-newtask:hover{
+    filter: drop-shadow(2px 2px 1px rgb(0 0 0 / 0.5));
+    transition-duration: 0.1s;
+}
+
+.toolbar-Logout{
+    display: inline;
+    background-color: #F00;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.right input {
+    border-radius: 5px;
+    width: 250px
+}
+
+.right button {
+    display: inline;
+    background-color: rgb(72, 99, 255);
+    color: white;
+    border-radius: 5px;
+}
+
+.right select {
+    display: inline;
+    background-color: rgb(44, 65, 182);
+    color: white;
+    border-radius: 5px;
+    margin-right: 20px;
+   text-align: center;
+}
+select * {
+    background-color: white;
+    color: black;
+}
+
+table button {
+    border-radius: 5px;
+    color: white
+}
+
+.tablee {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+table {
+    border: 1px solid black;
+    font-size: 40px;
+    width: 90%;
+    /* background-color: #eee; */
+}
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+tbody tr:hover{
+    background-color: #dfdfef !important;
+}
+#row_head{
+    background: #9ccc3a !important;
+}
+
+table .edit {
+    display: inline;
+    height: 50px;
+    background-color: rgb(72, 99, 255);
+    border:  rgb(72, 99, 255);
+    color: white;
+    border-radius: 5px;
+}
+
+table .detail {
+    display: inline;
+    height: 50px;
+    background-color: rgb(88, 113, 255);
+    color: white;
+    border-radius: 5px;
+    border: rgb(88, 113, 255);
+}
+
+table .delete_table {
+    display: inline-block;
+    height: 50px;
+    background-color: rgb(255, 50, 50);
+    border:  rgb(255, 50, 50);
+    color: white;
+    border-radius: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+tbody tr td {
+    width: 300px !important;
+    max-width: 300px !important;
+    word-wrap: break-word;
+}
+
+table tr {
+    text-align: center;
+}
+
+.Open {
+    color: #FF5555;
+}
+
+.Inprogress {
+    color: #FFDB62;
+}
+
+.Done {
+    color: #62FF65;
+}
+
+.left button,
+.right button,
+#drop-down,
+input {
+    font-size: 40px;
+    height: 50px;
+}
+.btn-pagination {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 1%;
+    right: 90px;
+}
+
+.result_search {
+    position: absolute;
+    bottom: 1%;
+    display: block;
+    width: 100%;
+    text-align : center;
+}
+.result_search p{
+
+}
+.btn-pagination button {
+    margin: 15px;
+    background-color: #eee;
+    border-radius: 5px;
+    font-size: 25px;
+    transition-duration: 0.5s;
+}
+
+.btn-pagination button:hover {
+    border: 2px solid #f78b39;
+    transition-duration: 0.5s;
+}
+.menu{
+    position: absolute;
+    bottom: 1%;
+    display: flex;
+    left: -10%;
+    transition-duration: 0.2s;
+}
+.menu:hover{
+    left: 0%;
+    transition-duration: 0.2s;
+}
+
+.menu button{
+    margin-left: 10px;
+    border-radius: 2%;
+    opacity: 0;
+    transition-duration: 3s;
+    height: 50px;
+}
+.menu img{
+    width: 150px;
+    transition-duration: 0.4s;
+}
+.menu:hover img{
+    width: 150px;
+    opacity: 0;
+    transition-duration: 3s;
+}
+.menu:hover button{
+    margin-left: 10px;
+    opacity: 1;
+    transition-duration: 1s;
+    border-radius: 50%;
+}
+.setting:hover{
+    background-color: #0066ff;
+    color: #FFF;
+}
+.logout:hover{
+    background-color: #ff0000;
+    color: #FFF;
+}
+.home{
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    height: 895px;
+    width: 1868px;
+    transition-duration: 0.5s;
+}
+.click_out{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    height: 895px;
+    width: 1868px;
+    background-color: rgba(0,0,0,0);
+    display: none;
+    transition-duration: 0.5s;
+}
+/*
+Create
+*/
+textarea {
+    resize: none;
+}
+.create{
+    opacity: 0;
+    width: 600px;
+    z-index: 100;
+    top: -1000px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    border-radius: 15px;
+    flex-direction: column;
+    transition-duration: 0.5s;
+    border: 2px solid rgba(0,0,0,1);
+    background-color: rgba(255,255,255,0.9);
+}
+.create form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.create form input{
+    width: 500px;
+    height: 40px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.create form textarea{
+    width: 500px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.create form div{
+    text-align: center;
+}
+.create form button{
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    color: #FFF;
+    border-radius: 10px;
+    background-color: red;
+    border: 0px solid rgba(0, 0, 0, 0);
+}
+.create .btn-close{
+    background-color:  rgb(167, 167, 167);
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0);
+    color: #FFF;
+    font-size: 14px;
+}
+.btn_creatnew{
+    display: flex;
+    font-size:14px;
+}
+
+.delete{
+    position: absolute;
+    z-index: 100;
+    top: -1000px;
+    width: 600px;
+    display: flex;
+    border-radius: 15px;
+    align-items: center;
+    flex-direction: column;
+    transition-duration: 0.5s;
+    border: 2px solid rgba(0,0,0,1);
+    background-color: rgba(231, 231, 231, 0.9);
+
+}
+.delete .close{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0);
+    font-size: 16px;
+    background-color: rgb(167, 167, 167);
+}
+.delete .accept{
+    background-color:  rgb(255, 0, 0);
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0);
+    color: #fff;
+    font-size: 16px;
+}
+.delete .gr_btn{
+    margin-bottom: 10px;
+}
+
+.action_edit{
+    text-align: center;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    top: -600px;
+    opacity: 0;
+    width: 600px;
+    border-radius: 15px;
+    transition-duration: 1s;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgba(0,0,0,1);
+}
+.action_edit form{
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.action_edit form *{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.action_edit form #title{
+    width: 500px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+.action_edit form #content{
+    width: 500px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+.action_edit form #drop-down{
+    width: 200px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+.action_edit .btn-close{
+    background-color:  rgb(167, 167, 167);
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0);
+    font-size: 16px;
+    border-radius: 10px;
+}
+.action_edit .btn-edit{
+    background-color:  rgb(80, 255, 133);
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0);
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.btn-edit *{
+    margin-left: 10px;
+    margin-right: 10px;
+}.detailTag{
+     width: 600px;
+     height: fit-content;
+     border: 2px solid rgb(0, 0, 0);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     border-radius: 40px;
+     position: absolute;
+     z-index: 70;
+     top: -600px;
+     opacity: 0;
+
+ }
+ .detailTag *{
+     margin: 30px;
+ }
+ .detailTag p{
+     font-size: 20px;
+     margin-top: 2%;
+     word-wrap: break-word;
+     text-overflow: ellipsis;
+     width: 550px;
+     height: fit-content;
+     transition-duration: 1s;
+     overflow: hidden;
+     background-color: white;
+     filter: drop-shadow(4px 3px 3px #000);
+     border-radius: 15px;
+ }
+ .detailTag .btn{
+     margin-top: -25px;
+     width: 100%;
+     display: flex;
+     justify-content: space-evenly;
+ }
+ .detailTag .btn *{
+     width: 100px;
+     font-size: 17px;
+     height: 40px;
+     border-radius: 15px;
+     border: 0px solid rgb(0, 0, 0);
+     color: white !important;
+ }

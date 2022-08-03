@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <script defer src="/js/TaskCSS.js"></script>
+    <link href="/styleTask.css" rel="stylesheet">
+    <title>My tasks</title>
+</head>
+
+<body>
+<div class="home">
+    <div class="toolbar">
+        <div class="left">
+            <button class="toolbar-elm toolbar-export">Export CSV</button>
+            <button class="toolbar-elm toolbar-newtask" th:onclick="creat_task()">New</button>
+        </div>
+        <form action="/tasks/filter" class="right" method="POST" th:object="${search}">
+            <input placeholder="Keyword" th:field="*{title}" type="text">
+            <button>Filter</button>
+            <select class="toolbar-elm" id="drop-down" name="drop-down" onchange="submitform()" th:field="*{status}">
+                <option th:value="1">Open</option>
+                <option th:value="2">Doing</option>
+                <option th:value="3">Done</option>
+                <option selected th:value="0">All</option>
+            </select>
+        </form>
+    </div>
+
+    <hr>
+    <div class="tablee">
+        <table class="">
+            <tr id="row_head">
+                <th class="title">Title</th>
+                <th class="status" width="10%">Status</th>
+                <th width="15%">Action</th>
+            </tr>
+            <tbody>
+            <tr th:each="task, state: ${listTask}">
+                <td style="text-align:left" th:text="${task.title}"/>
+                <td th:class="${task.status==1?'Open':task.status==2?'Inprogress':'Done'}"
+                    th:text="${task.status==1?'Open':task.status==2?'Doing':'Done'}"/>
+                <td>
+                    <button class="edit"
+                            th:onclick="GenerateTaskEdit([[${task.id}]],[[${task.title}]],[[${task.content}]],[[${task.status}]])">
+                        Chỉnh sửa
+                    </button>
+                    <button class="detail"
+                            th:onclick="GenerateTaskDetails([[${task.id}]],[[${task.title}]],[[${task.content}]],[[${task.status}]])">
+                        Chi tiết
+                    </button>
+                    <button class="delete_table" th:onclick="GenerateTaskDelete([[${task.id}]],[[${task.title}]])">Xoá
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn-pagination">
+        <a th:href="@{/tasks/(page=${firstPage})}">
+            <button>First</button>
+        </a>
+
+        <a th:each="pageNum: ${countPage}" th:class="${pageNum}" th:href="@{/tasks/(page=${pageNum})}">
+            <button th:text="pageNum${pageNum}"></button>
+        </a>
+
+        <a th:href="@{/tasks/(page=${lastPage})}">
+            <button>Last</button>
+        </a>
+    </div>
+    <div class="result_search">
+        <p th:text="${resultSearch}"></p>
+    </div>
+    <div class="menu">
+        <a href="/logout">
+            <button class="logout" href="">Đăng xuất</button>
+        </a>
+        <button class="setting">Tài khoản</button>
+        <img alt="" src="/images/menu.png">
+    </div>
+</div>
+<div class="click_out" onclick="wayBackHome()"></div>
+
+<div class="create">
+    <h1>Tạo mới</h1>
+    <hr>
+    <form action="#" method="POST" th:action="@{/tasks/}" th:object="${task}">
+        <input id="title" name="" placeholder="Tiêu đề" th:field="*{title}" type="text">
+        <textarea cols="30" id="content" maxlength="200" name="" placeholder="Nội dung" rows="7"
+                  th:field="*{content}"></textarea>
+        <div class="btn_creatnew">
+            <input class="btn-close" th:onclick="wayBackHome()" type="button" value="Huỷ">
+            <button class="btn-create">Lưu</button>
+        </div>
+    </form>
+</div>
+
+<div class="delete">
+    <h1></h1>
+    <hr>
+    <h3>Task không thể được hoàn lại sau khi xoá, bạn có chắc chắn không</h3>
+    <hr>
+    <form method="POST" th:object="${task}">
+        <div class="gr_btn">
+            <input class="close" th:onclick="wayBackHome()" type="button" value="Huỷ">
+            <button class="accept">Xoá</button>
+        </div>
+    </form>
+</div>
+
+<div class="action_edit">
+    <h1>Chỉnh sửa</h1>
+    <form method="POST" th:object="${task}">
+        <form action="#" method="POST" th:action="@{/tasks/}" th:object="${task}">
+            <input id="title" name="" placeholder="Tiêu đề" th:field="*{title}" type="text">
+            <textarea cols="30" id="content" maxlength="200" name="" placeholder="Nội dung" rows="7"
+                      th:field="*{content}"></textarea>
+            <select class="'" id="drop-down" name="drop-down" th:field="*{status}">
+                <option th:value="1">Open</option>
+                <option th:value="2">Doing</option>
+                <option th:value="3">Done</option>
+            </select>
+            <div class="btn_edit">
+                <input class="btn-close" th:onclick="wayBackHome()" type="button" value="Huỷ">
+                <button class="btn-edit">Lưu</button>
+            </div>
+        </form>
+    </form>
+</div>
+
+<div class="detailTag">
+    <h1>Chi tiết</h1>
+    <h1></h1>
+    <p></p>
+    <div class="btn">
+        <button style="background-color: #6C767D;">Trở lại</button>
+        <button style="background-color: #0085fc;">Sửa</button>
+        <button style="background-color: #f00;">Xoá</button>
+    </div>
+</div>
+</body>
+
+</html>
