@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vn.amela.todoList.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="vn.amela.todoList.model.User">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    <select id="findAll" resultMap="BaseResultMap">
+        select *
+        from accounttable
+    </select>
+    <insert id="registerUser">
+        insert into accounttable
+        (id,name,username,password)
+        values
+        (
+        #{user.id,jdbcType=NUMERIC},
+        #{user.name,jdbcType=VARCHAR},
+        #{user.username,jdbcType=VARCHAR},
+        #{user.password,jdbcType=VARCHAR}
+        );
+    </insert>
+    <update id="updatePassword">
+        update accounttable
+        set password = #{user.password,jdbcType=VARCHAR}
+        where id = #{user.id}
+    </update>
+    <delete id="deleteById">
+        delete from accounttable
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <select id="findOneByUsername" resultMap="BaseResultMap">
+            select *
+            from accounttable
+        where
+        username = #{username,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
