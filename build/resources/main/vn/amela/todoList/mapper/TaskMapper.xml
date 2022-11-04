@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vn.amela.todoList.mapper.TaskMapper">
+
+    <resultMap id="BaseResultMap" type="vn.amela.todoList.model.Task">
+        <result property="id" column="id"/>
+        <result property="id_user" column="id_user"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="findById_user" parameterType="Long" resultMap="BaseResultMap">
+        SELECT * FROM tasklisttable
+        WHERE id_user = ${id_user}
+    </select>
+    <select id="selectAllById_userAndTitleContaining" resultMap="BaseResultMap">
+        select *  from tasklisttable
+        where
+        id_user = #{id_user,jdbcType=NUMERIC}
+        AND title like CONCAT('%', #{title,jdbcType=VARCHAR},'%')
+    </select>
+    <select id="selectAllById_userAndTitleContainingAndStatus" resultMap="BaseResultMap">
+        select *
+        from tasklisttable
+        where
+        id_user = #{id_user,jdbcType=NUMERIC}
+        AND title like CONCAT('%', #{title,jdbcType=VARCHAR},'%')
+        AND status = #{status}
+    </select>
+    <select id="findAllById_user" resultMap="BaseResultMap">
+        select *
+        from tasklisttable
+        where
+        id_user = #{id_user,jdbcType=NUMERIC}
+    </select>
+    <insert id="creatTask">
+        insert into tasklisttable
+        (id,id_user,title,
+        content,status)
+        values
+        (
+        #{task.id,jdbcType=NUMERIC},
+        #{task.id_user,jdbcType=NUMERIC},
+        #{task.title,jdbcType=VARCHAR},
+        #{task.content,jdbcType=VARCHAR},
+        #{task.status}
+        );
+    </insert>
+    <update id="updateTask">
+        UPDATE tasklisttable SET
+            title = #{task.title},
+            content = #{task.content},
+            status = #{task.status}
+        where id = #{task.id}
+    </update>
+    <delete id="deleteById">
+        delete from tasklisttable
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select *
+        from tasklisttable
+    </select>
+</mapper>

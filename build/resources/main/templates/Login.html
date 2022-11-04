@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/ValidatorLogin.js"></script>
+    <link rel="stylesheet" href="/StyleAccount.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+<form th:action="@{/account/login}" action="#" method="POST" th:object="${user}" id="form" onkeyup="checkFormValid()">
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt="">
+            <input type="text" th:field="*{username}" id='username' placeholder="Username">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt="">
+            <input type="password" th:field="*{password}" id='password' placeholder="Password">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+    <button id="submit-btn">Login</button>
+    <msg th:text="${errRes}" style='margin-left: 0%'></msg>
+    <pre>Create a new account? <a href="/register">Register</a></pre>
+    <script>
+            Validator({
+                form: '#form',
+                rules: [
+                    Validator.checkUsername('#username'),
+                    Validator.checkPassword('#password'),
+                ],
+                onSubmit: function (data) {
+
+                }
+            });
+        </script>
+</form>
+</body>
+
+</html>

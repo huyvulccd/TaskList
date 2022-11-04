@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/ValidatorRegister.js"></script>
+    <link rel="stylesheet" href="/StyleAccount.css">
+    <title>Register</title>
+</head>
+<body>
+<form th:action="@{/account/register}" action="#" method="POST" th:object="${user}" onkeyup="checkFormValid()" id="form">
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt=""><input type="text" th:field="*{name}" id='name'  placeholder="Your name">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt=""><input type="text" th:field="*{username}" id='username'
+                                                   placeholder="Username">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt="">
+            <input type="password" id='password' placeholder="Password">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+
+    <div class="form-Son">
+        <div class="inform">
+            <img src="/images/@.png" alt="">
+            <input type="password" id='repassword' th:field="*{password}" placeholder="Re-password">
+        </div>
+        <msg></msg>
+        <br>
+    </div>
+    <button type="submit" id="submit-btn">Register</button>
+    <msg th:utext="${msgError}" style='margin-left: 0%'></msg>
+    <pre>You are have account? <a href="/">Login</a></pre>
+    <script>
+            Validator({
+                form: '#form',
+                rules: [
+                    Validator.checkName('#name'),
+                    Validator.checkUsername('#username'),
+                    Validator.checkPassword('#password'),
+                    Validator.checkRePass('#repassword')
+                ]
+            });
+        </script>
+</form>
+</body>
+
+</html>
