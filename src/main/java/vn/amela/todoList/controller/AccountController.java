@@ -9,23 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import vn.amela.todoList.model.ResponseUser;
 import vn.amela.todoList.model.User;
 import vn.amela.todoList.dto.Process;
+import vn.amela.todoList.service.UserService;
 import vn.amela.todoList.service.UserServiceImpl;
 
 @Controller
-@RequestMapping("account")
+@RequestMapping("/account")
 public class AccountController {
-    @PostMapping("login")
+    @PostMapping("/login")
     public String pageLogin(Model model) {
         model.addAttribute("user", new User());
         return "Login.html";
     }
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @PostMapping("register")
     public String pageRegister(@ModelAttribute("@{user}") User user) {
-        ResponseUser responseUser = userServiceImpl.RegisterAccount(user);
+        ResponseUser responseUser = userService.RegisterAccount(user);
 
         if (!responseUser.isStatus()) {
             Process.notificationError = true;

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todolist</a> &gt; <a href="index.source.html" class="el_package">vn.amela.todoList.controller</a> &gt; <span class="el_source">TaskController.java</span></div><h1>TaskController.java</h1><pre class="source lang-java linenums">package vn.amela.todoList.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import vn.amela.todoList.dto.Process;
+import vn.amela.todoList.dto.Search;
+import vn.amela.todoList.model.Task;
+import vn.amela.todoList.service.TaskServiceImpl;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.*;
+
+@Controller
+@RequestMapping(&quot;tasks&quot;)
+<span class="nc" id="L18">public class TaskController {</span>
+<span class="nc" id="L19">    private final int displayMaxPage = 1;</span>
+    @Autowired
+    private TaskServiceImpl taskServiceImpl;
+    private Search search;
+<span class="nc" id="L23">    private int currentPageRedirect = 0;</span>
+
+    @GetMapping(&quot;&quot;)
+    public String getListTasks(Model model, @RequestParam(&quot;page&quot;) Optional&lt;Integer&gt; page) {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (Process.getCurrentUsername().isEmpty()) {</span>
+
+<span class="nc" id="L29">            return &quot;redirect:/&quot;;// check</span>
+        }
+
+<span class="nc" id="L32">        int currentPage = page.orElse(1);</span>
+<span class="nc" id="L33">        currentPageRedirect = currentPage;</span>
+<span class="nc" id="L34">        int lengthTasks = taskServiceImpl.getListTasksByCondition(search.status, search.title).size(); // dá»ƒ lÃ m button phÃ¢n trang</span>
+<span class="nc" id="L35">        List&lt;Integer&gt; pagesDisplay = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        for (int i = 1; i &lt;= lengthTasks; i += 10) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (Math.abs(currentPage - (i/10+1)) &lt;= displayMaxPage)</span>
+<span class="nc" id="L38">            pagesDisplay.add(i/10+1);</span>
+        }
+
+<span class="nc" id="L41">        List&lt;Task&gt; tasks = taskServiceImpl.findTasksByPaginated(currentPage, search.status, search.title);</span>
+
+<span class="nc" id="L43">        model.addAttribute(&quot;listTask&quot;, tasks);</span>
+
+<span class="nc" id="L45">        model.addAttribute(&quot;firstPage&quot;, 1);</span>
+<span class="nc" id="L46">        model.addAttribute(&quot;lastPage&quot;, (lengthTasks - 1) / 10 + 1);</span>
+<span class="nc" id="L47">        model.addAttribute(&quot;countPage&quot;, pagesDisplay);</span>
+<span class="nc" id="L48">        model.addAttribute(&quot;currentPage&quot;, currentPage);</span>
+<span class="nc" id="L49">        model.addAttribute(&quot;task&quot;, new Task());</span>
+<span class="nc" id="L50">        model.addAttribute(&quot;search&quot;, new Search());</span>
+<span class="nc" id="L51">        model.addAttribute(&quot;resultSearch&quot;, lengthTasks + &quot; káº¿t quáº£ Ä‘Æ°á»�c tÃ¬m tháº¥y, trang (&quot; + currentPage + &quot;/&quot; + ((lengthTasks-1)/10+1) + &quot;)&quot;);</span>
+<span class="nc" id="L52">        return &quot;TaskList.html&quot;;</span>
+    }
+
+    @PostMapping(&quot;/filter&quot;)
+    public String getListFilterTasks(@ModelAttribute(&quot;@{search}&quot;) Search filter) {
+<span class="nc" id="L57">        search.title = filter.getTitle();</span>
+<span class="nc" id="L58">        search.status = filter.getStatus();</span>
+<span class="nc" id="L59">        return &quot;redirect:/tasks&quot;;</span>
+    }/// sau fix láº¡i hiá»ƒn thá»‹ tá»‘i Ä‘a 2 trang trÆ°á»›c Ä‘Ã³
+
+
+    @PostMapping(&quot;&quot;)
+    public String postTask(Task task) {
+<span class="nc" id="L65">        taskServiceImpl.postTask(task);</span>
+<span class="nc" id="L66">        int lengthTasks = taskServiceImpl.getListTasksByCondition(search.status, search.title).size();</span>
+<span class="nc" id="L67">        return &quot;redirect:/tasks/?page=&quot; + ((lengthTasks-1)/10+1); // Ä‘áº¿n trang cÃ³ post vá»«a táº¡o má»›i</span>
+    }
+
+    @PostMapping(&quot;/edit/{id}&quot;)
+    public String putTask(@ModelAttribute(&quot;@{task}&quot;) Task task) {
+<span class="nc" id="L72">        taskServiceImpl.updateTask(task);</span>
+<span class="nc" id="L73">        return &quot;redirect:/tasks/?page=&quot; + currentPageRedirect; //</span>
+    }
+
+    @PostMapping(&quot;/delete/{id}&quot;)
+    public String delete(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L78">        taskServiceImpl.deleteTask(id);</span>
+<span class="nc" id="L79">        return &quot;redirect:/tasks/?page=1&quot;;</span>
+    }
+
+    @GetMapping(&quot;/exportCSV&quot;)
+    public String exportToCSV(HttpServletResponse servletResponse) throws IOException {
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L85">            return &quot;redirect:/&quot;;// check</span>
+        }
+<span class="nc" id="L87">        servletResponse.setContentType(&quot;text/csv&quot;);</span>
+<span class="nc" id="L88">        servletResponse.addHeader(&quot;Content-Disposition&quot;,&quot;attachment; filename=\&quot;Tasks of &quot;+ Process.getCurrentUsername() +&quot;.csv\&quot;&quot;);</span>
+<span class="nc" id="L89">        taskServiceImpl.ExportCSV(servletResponse.getWriter());</span>
+
+<span class="nc" id="L91">        return &quot;redirect:/tasks/?page=&quot; + currentPageRedirect;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

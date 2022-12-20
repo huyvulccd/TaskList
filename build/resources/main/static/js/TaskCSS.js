@@ -86,6 +86,3 @@ function GenerateTaskDelete(id,title) {
 function submitform(){
     document.querySelector('.home form').submit()
 }
-function resetSearch(){
-    document.querySelector('.right form').submit()
-}

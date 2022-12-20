@@ -22,25 +22,14 @@ public class SercureConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-
-                // Cho phép các request static không bị ràng buộc
                 .antMatchers( "/manager/**", "/upload/**").permitAll()
-
-                // Các request kiểu "/admin/" phải đăng nhập
-                /*.antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/user/home").hasRole("GUEST")*/
                 .and()
-
-                // Cấu hình trang đăng nhập
                 .formLogin().loginPage("/").loginProcessingUrl("/account/login").
 
                 defaultSuccessUrl("/tasks", true)
                 .failureUrl("/login/false")
-                .permitAll()//
-
+                .permitAll()
                 .and()
-
-                //Cấu hình trang logout
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/").invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID").permitAll();
     }
@@ -52,6 +41,5 @@ public class SercureConfig extends WebSecurityConfigurerAdapter{
 
     public static void main(String[] args) {
 //        System.out.println(new BCryptPasswordEncoder(4).encode("".trim()));
-        System.out.println("Cộng hoà xã hội chủ nghĩa Việt Nam");
     }
 }

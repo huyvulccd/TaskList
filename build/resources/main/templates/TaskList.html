@@ -18,7 +18,6 @@
             <a href="/tasks/exportCSV"><button class="toolbar-elm toolbar-export">Export CSV</button></a>
             <button class="toolbar-elm toolbar-newtask" th:onclick="creat_task()">New</button>
         </div>
-        <form action="/"><i style="width: 30px" class="fa-solid fa-sync fa-spin"></i></form>
         <form action="/tasks/filter" class="right" method="POST" th:object="${search}">
             <input placeholder="Keyword" th:field="*{title}" type="text">
             <button>Filter</button>

@@ -1,5 +1,7 @@
 package vn.amela.todoList.service;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskMapper taskMapper;

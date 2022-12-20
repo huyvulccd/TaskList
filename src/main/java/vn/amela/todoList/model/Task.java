@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Time;
 
 @Entity
-@Table(name = "tasklisttable")
+@Table(name = "tasklist")
 public class Task {
     @Id
     Long id;

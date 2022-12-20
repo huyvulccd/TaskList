@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HomeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todolist</a> &gt; <a href="index.source.html" class="el_package">vn.amela.todoList.controller</a> &gt; <span class="el_source">HomeController.java</span></div><h1>HomeController.java</h1><pre class="source lang-java linenums">package vn.amela.todoList.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import vn.amela.todoList.dto.Process;
+import vn.amela.todoList.dto.Search;
+import vn.amela.todoList.model.User;
+
+@Controller
+@RequestMapping(&quot;&quot;)
+<span class="nc" id="L13">public class HomeController {</span>
+
+    @GetMapping(&quot;&quot;)
+    public String redirectLoginPage() {
+<span class="nc" id="L17">        Search.resetFilter();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()){</span>
+<span class="nc" id="L19">            return &quot;redirect:/tasks&quot;;</span>
+        }
+<span class="nc" id="L21">        return &quot;redirect:login&quot;;</span>
+    }
+
+    @GetMapping(&quot;login&quot;)
+    public String loginPage(Model model) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L27">            Search.resetFilter();</span>
+<span class="nc" id="L28">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+        }
+<span class="nc" id="L30">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc" id="L31">        return &quot;Login.html&quot;;</span>
+    }
+
+    @GetMapping(&quot;/login/false&quot;)
+    public String loginPageFalse(Model model) {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L37">            Search.resetFilter();</span>
+<span class="nc" id="L38">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+        }
+
+<span class="nc" id="L41">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc" id="L42">        model.addAttribute(&quot;errRes&quot;, &quot;Login failed! Wrong username or password.&quot;);</span>
+<span class="nc" id="L43">        return &quot;Login.html&quot;;</span>
+    }
+
+    @GetMapping(&quot;register&quot;)
+    public String registerPage(Model model) {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L49">            Search.resetFilter();</span>
+<span class="nc" id="L50">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+        }
+<span class="nc" id="L52">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (Process.notificationError == true)</span>
+<span class="nc" id="L54">            model.addAttribute(&quot;msgError&quot;, Process.msgError);</span>
+<span class="nc" id="L55">        Process.notificationError = false;</span>
+<span class="nc" id="L56">        return &quot;Register.html&quot;;</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

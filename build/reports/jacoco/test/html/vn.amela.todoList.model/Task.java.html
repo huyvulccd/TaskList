@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todolist</a> &gt; <a href="index.source.html" class="el_package">vn.amela.todoList.model</a> &gt; <span class="el_source">Task.java</span></div><h1>Task.java</h1><pre class="source lang-java linenums">package vn.amela.todoList.model;
+
+import javax.persistence.*;
+import java.sql.Time;
+
+@Entity
+@Table(name = &quot;tasklist&quot;)
+public class Task {
+    @Id
+    Long id;
+    @Column(name = &quot;id_user&quot;)
+    private Long id_user;
+    @Column(name = &quot;title&quot;)
+    private String title;
+    @Column(name = &quot;content&quot;)
+    private String content;
+    @Column(name = &quot;status&quot;)
+    private int status;
+
+    public static final int DONE = 3;
+    public static final int IN_PROGRESS = 2;
+    public static final int OPEN = 1;
+
+<span class="nc" id="L24">    public Task() {</span>
+<span class="nc" id="L25">    }</span>
+
+<span class="nc" id="L27">    public Task(String title, String content, int status) {</span>
+<span class="nc" id="L28">        this.title = title;</span>
+<span class="nc" id="L29">        this.content = content;</span>
+<span class="nc" id="L30">        this.status = status;</span>
+<span class="nc" id="L31">    }</span>
+
+    public Long getId() {
+<span class="nc" id="L34">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L38">        this.id = id;</span>
+<span class="nc" id="L39">    }</span>
+
+    public Long getId_user() {
+<span class="nc" id="L42">        return id_user;</span>
+    }
+
+    public void setId_user(Long id_user) {
+<span class="nc" id="L46">        this.id_user = id_user;</span>
+<span class="nc" id="L47">    }</span>
+
+    public String getTitle() {
+<span class="nc" id="L50">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="nc" id="L54">        this.title = title;</span>
+<span class="nc" id="L55">    }</span>
+
+    public String getContent() {
+<span class="nc" id="L58">        return content;</span>
+    }
+
+    public void setContent(String content) {
+<span class="nc" id="L62">        this.content = content;</span>
+<span class="nc" id="L63">    }</span>
+
+    public int getStatus() {
+<span class="nc" id="L66">        return status;</span>
+    }
+
+    public void setStatus(int status) {
+<span class="nc" id="L70">        this.status = status;</span>
+<span class="nc" id="L71">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L75">        return &quot;Task{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, id_user=&quot; + id_user +
+                &quot;, title='&quot; + title + '\'' +
+                &quot;, content='&quot; + content + '\'' +
+                &quot;, status=&quot; + status +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
