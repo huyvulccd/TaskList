@@ -94,7 +94,7 @@ class UserServiceImplTest {
         User user = new User();
         user.setName("1");
         user.setPassword("1");
-        user.setUsername("huyvulccd");
+        user.setUsername("ATKTA1234");
         service.RegisterAccount(user);
     }
 
@@ -103,7 +103,7 @@ class UserServiceImplTest {
         User user = new User();
         user.setName("1");
         user.setPassword("1");
-        user.setUsername("huyvulccd");
+        user.setUsername("ATKTA1234");
         when(userMapper.findAll()).thenReturn(List.of());
         service.RegisterAccount(user);
     }

@@ -30,9 +30,9 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(),keyword,status);
     }
     @Override
-    public int postTask(Task task) {
+    public void postTask(Task task) {
         if (task.getTitle().isEmpty())
-            return -1;
+            return;
         List<Task> tasks = taskMapper.selectAll();
         int tasksLength = tasks.size();
         if (tasksLength==0){
@@ -42,12 +42,12 @@ public class TaskServiceImpl implements TaskService {
         }
         task.setStatus(1);
         task.setId_user(Process.getID_User());
-        return taskMapper.creatTask(task);
+        taskMapper.creatTask(task);
     }
 
     @Override
-    public int updateTask(Task task) {
-        return taskMapper.updateTask(task);
+    public void updateTask(Task task) {
+        taskMapper.updateTask(task);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findTasksByPaginated(int pageable, int status, String keyword) {
         List<Task> tasks = getListTasksByCondition(status, keyword);
         int length = tasks.size();
-        return tasks.subList((pageable - 1) * 10, pageable * 10 >= length ? length : pageable * 10);
+        return tasks.subList((pageable - 1) * 10, Math.min(pageable * 10, length));
     }
     @Override
     public void ExportCSV(Writer writer) {

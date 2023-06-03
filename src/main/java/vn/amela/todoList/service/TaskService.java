@@ -8,9 +8,11 @@ import java.util.List;
 public interface TaskService {
     public List<Task> getListTasksByCondition(int status, String keyword);
 
-    public int postTask(Task task);
+    public void postTask(Task task);
 
-    public int updateTask(Task task);
+    public void updateTask(Task task);
+
+    public List<Task> findTasksByPaginated(int pageable, int status, String keyword);
 
     public void deleteTask(Long id);
 

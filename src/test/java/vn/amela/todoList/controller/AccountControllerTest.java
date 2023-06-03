@@ -27,7 +27,6 @@ class AccountControllerTest {
     @BeforeEach
     public void setUp(WebApplicationContext context) {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).defaultRequest(Model).build();
-
     }
 
     @Test
