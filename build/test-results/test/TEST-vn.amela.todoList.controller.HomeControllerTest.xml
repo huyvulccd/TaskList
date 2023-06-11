@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="vn.amela.todoList.controller.HomeControllerTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-06-11T02:32:42" hostname="NGUYENHUYVU" time="1.147">
+  <properties/>
+  <testcase name="redirectLoginPage_2()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.216"/>
+  <testcase name="redirectLoginPage_3()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.014"/>
+  <testcase name="redirectLoginPage_4()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.022"/>
+  <testcase name="redirectLoginPage_5()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.012"/>
+  <testcase name="redirectLoginPage_6()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.022"/>
+  <testcase name="redirectLoginPage_7()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.012"/>
+  <testcase name="loginPageF_1()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.016"/>
+  <testcase name="loginPageF_2()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.715"/>
+  <testcase name="registerPage_1()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.012"/>
+  <testcase name="registerPage_2()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.031"/>
+  <testcase name="registerPage_3()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.014"/>
+  <testcase name="redirectLoginPage()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.009"/>
+  <testcase name="loginPage_1()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.022"/>
+  <testcase name="loginPage_2()" classname="vn.amela.todoList.controller.HomeControllerTest" time="0.016"/>
+  <system-out><![CDATA[2023-06-11 09:32:42.861  INFO 5924 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [vn.amela.todoList.controller.HomeControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-06-11 09:32:42.861  INFO 5924 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [vn.amela.todoList.controller.HomeControllerTest]: HomeControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-11 09:32:42.864  INFO 5924 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration vn.amela.todoList.TodoListApplication for test class vn.amela.todoList.controller.HomeControllerTest
+2023-06-11 09:32:42.867  INFO 5924 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-06-11 09:32:42.872  INFO 5924 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@520d9574, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3baf166a, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4af67135, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@168667f2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@289ef663, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6bc1b95c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@124702c8, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@37db4e85, org.springframework.test.context.event.EventPublishingTestExecutionListener@68a98bf3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@e44d4e3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@243fd6a1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@497d0bc5, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6dafe70a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@45e4c590, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1f348953]
+2023-06-11 09:32:42.882  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:42.882  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:42.884  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2023-06-11 09:32:43.100  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.100  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.101  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.116  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.117  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.118  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.139  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.139  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.141  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2023-06-11 09:32:43.152  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.152  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.164  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 12 ms
+2023-06-11 09:32:43.177  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.177  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.178  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.186  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.186  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.188  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.203  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.204  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.206  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.920  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.921  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.923  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2023-06-11 09:32:43.934  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.934  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.936  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2023-06-11 09:32:43.966  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.966  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.967  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.980  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.980  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.982  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-06-11 09:32:43.991  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:43.994  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:43.997  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2023-06-11 09:32:44.012  INFO 5924 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-11 09:32:44.012  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-11 09:32:44.013  INFO 5924 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

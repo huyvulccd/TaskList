@@ -18,6 +18,9 @@ public class User implements UserDetails {
     private String password;
 
     public User() {
+        this.name = "";
+        this.username = "";
+        this.password = "";
     }
 
     public User(String name, String username, String password) {

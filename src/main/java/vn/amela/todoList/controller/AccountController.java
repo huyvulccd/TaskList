@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import vn.amela.todoList.model.ResponseUser;
 import vn.amela.todoList.model.User;
 import vn.amela.todoList.dto.Process;
@@ -15,14 +16,9 @@ import vn.amela.todoList.service.UserServiceImpl;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
-    @PostMapping("/login")
-    public String pageLogin(Model model) {
-        model.addAttribute("user", new User());
-        return "Login.html";
-    }
-
     @Autowired
-    private UserService userService;
+    UserService userService;
+
 
     @PostMapping("register")
     public String pageRegister(@ModelAttribute("@{user}") User user) {

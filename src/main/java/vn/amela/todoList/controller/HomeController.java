@@ -50,7 +50,7 @@ public class HomeController {
             return "redirect:/tasks/?page=1";
         }
         model.addAttribute("user", new User());
-        if (Process.notificationError == true)
+        if (Process.notificationError)
             model.addAttribute("msgError", Process.msgError);
         Process.notificationError = false;
         return "Register.html";

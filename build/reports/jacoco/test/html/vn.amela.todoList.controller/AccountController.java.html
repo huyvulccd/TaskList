@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import vn.amela.todoList.model.ResponseUser;
 import vn.amela.todoList.model.User;
 import vn.amela.todoList.dto.Process;
@@ -14,26 +15,21 @@ import vn.amela.todoList.service.UserServiceImpl;
 
 @Controller
 @RequestMapping(&quot;/account&quot;)
-<span class="nc" id="L17">public class AccountController {</span>
-    @PostMapping(&quot;/login&quot;)
-    public String pageLogin(Model model) {
-<span class="nc" id="L20">        model.addAttribute(&quot;user&quot;, new User());</span>
-<span class="nc" id="L21">        return &quot;Login.html&quot;;</span>
-    }
-
+<span class="fc" id="L18">public class AccountController {</span>
     @Autowired
-    private UserService userService;
+    UserService userService;
+
 
     @PostMapping(&quot;register&quot;)
     public String pageRegister(@ModelAttribute(&quot;@{user}&quot;) User user) {
-<span class="nc" id="L29">        ResponseUser responseUser = userService.RegisterAccount(user);</span>
+<span class="fc" id="L25">        ResponseUser responseUser = userService.RegisterAccount(user);</span>
 
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (!responseUser.isStatus()) {</span>
-<span class="nc" id="L32">            Process.notificationError = true;</span>
-<span class="nc" id="L33">            Process.msgError = responseUser.getMessage();</span>
-<span class="nc" id="L34">            return &quot;redirect:/register&quot;;</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (!responseUser.isStatus()) {</span>
+<span class="fc" id="L28">            Process.notificationError = true;</span>
+<span class="fc" id="L29">            Process.msgError = responseUser.getMessage();</span>
+<span class="fc" id="L30">            return &quot;redirect:/register&quot;;</span>
         }
-<span class="nc" id="L36">        return &quot;redirect:/&quot;;</span>
+<span class="fc" id="L32">        return &quot;redirect:/&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

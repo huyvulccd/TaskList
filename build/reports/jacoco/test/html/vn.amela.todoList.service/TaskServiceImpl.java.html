@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-<span class="nc" id="L21">public class TaskServiceImpl implements TaskService {</span>
+<span class="fc" id="L21">public class TaskServiceImpl implements TaskService {</span>
     @Autowired
     private TaskMapper taskMapper;
 
@@ -30,9 +30,9 @@ import java.util.List;
 <span class="nc" id="L30">        return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(),keyword,status);</span>
     }
     @Override
-    public int postTask(Task task) {
+    public void postTask(Task task) {
 <span class="nc bnc" id="L34" title="All 2 branches missed.">        if (task.getTitle().isEmpty())</span>
-<span class="nc" id="L35">            return -1;</span>
+<span class="nc" id="L35">            return;</span>
 <span class="nc" id="L36">        List&lt;Task&gt; tasks = taskMapper.selectAll();</span>
 <span class="nc" id="L37">        int tasksLength = tasks.size();</span>
 <span class="nc bnc" id="L38" title="All 2 branches missed.">        if (tasksLength==0){</span>
@@ -42,13 +42,13 @@ import java.util.List;
         }
 <span class="nc" id="L43">        task.setStatus(1);</span>
 <span class="nc" id="L44">        task.setId_user(Process.getID_User());</span>
-<span class="nc" id="L45">        return taskMapper.creatTask(task);</span>
-    }
+<span class="nc" id="L45">        taskMapper.creatTask(task);</span>
+<span class="nc" id="L46">    }</span>
 
     @Override
-    public int updateTask(Task task) {
-<span class="nc" id="L50">        return taskMapper.updateTask(task);</span>
-    }
+    public void updateTask(Task task) {
+<span class="nc" id="L50">        taskMapper.updateTask(task);</span>
+<span class="nc" id="L51">    }</span>
 
     @Override
     public void deleteTask(Long id) {
@@ -58,7 +58,7 @@ import java.util.List;
     public List&lt;Task&gt; findTasksByPaginated(int pageable, int status, String keyword) {
 <span class="nc" id="L59">        List&lt;Task&gt; tasks = getListTasksByCondition(status, keyword);</span>
 <span class="nc" id="L60">        int length = tasks.size();</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        return tasks.subList((pageable - 1) * 10, pageable * 10 &gt;= length ? length : pageable * 10);</span>
+<span class="nc" id="L61">        return tasks.subList((pageable - 1) * 10, Math.min(pageable * 10, length));</span>
     }
     @Override
     public void ExportCSV(Writer writer) {

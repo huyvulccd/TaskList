@@ -17,75 +17,78 @@ public class User implements UserDetails {
     @Column(name = &quot;password&quot;)
     private String password;
 
-<span class="nc" id="L20">    public User() {</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L20">    public User() {</span>
+<span class="fc" id="L21">        this.name = &quot;&quot;;</span>
+<span class="fc" id="L22">        this.username = &quot;&quot;;</span>
+<span class="fc" id="L23">        this.password = &quot;&quot;;</span>
+<span class="fc" id="L24">    }</span>
 
-<span class="nc" id="L23">    public User(String name, String username, String password) {</span>
-<span class="nc" id="L24">        this.name = name;</span>
-<span class="nc" id="L25">        this.username = username;</span>
-<span class="nc" id="L26">        this.password = password;</span>
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L26">    public User(String name, String username, String password) {</span>
+<span class="fc" id="L27">        this.name = name;</span>
+<span class="fc" id="L28">        this.username = username;</span>
+<span class="fc" id="L29">        this.password = password;</span>
+<span class="fc" id="L30">    }</span>
 
     public Long getId_User() {
-<span class="nc" id="L30">        return id;</span>
+<span class="fc" id="L33">        return id;</span>
     }
 
     public void setId(Long id) {
-<span class="nc" id="L34">        this.id = id;</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L37">        this.id = id;</span>
+<span class="fc" id="L38">    }</span>
 
     public String getName() {
-<span class="nc" id="L38">        return name;</span>
+<span class="fc" id="L41">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="nc" id="L42">        this.name = name;</span>
-<span class="nc" id="L43">    }</span>
+<span class="fc" id="L45">        this.name = name;</span>
+<span class="fc" id="L46">    }</span>
 
     public String getUsername() {
-<span class="nc" id="L46">        return username;</span>
+<span class="fc" id="L49">        return username;</span>
     }
 
     @Override
     public boolean isAccountNonExpired() {
-<span class="nc" id="L51">        return true;</span>
+<span class="nc" id="L54">        return true;</span>
     }
 
     @Override
     public boolean isAccountNonLocked() {
-<span class="nc" id="L56">        return true;</span>
+<span class="nc" id="L59">        return true;</span>
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-<span class="nc" id="L61">        return true;</span>
+<span class="nc" id="L64">        return true;</span>
     }
 
     @Override
     public boolean isEnabled() {
-<span class="nc" id="L66">        return true;</span>
+<span class="nc" id="L69">        return true;</span>
     }
 
     public void setUsername(String username) {
-<span class="nc" id="L70">        this.username = username;</span>
-<span class="nc" id="L71">    }</span>
+<span class="fc" id="L73">        this.username = username;</span>
+<span class="fc" id="L74">    }</span>
 
     @Override
     public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
-<span class="nc" id="L75">        return null;</span>
+<span class="nc" id="L78">        return null;</span>
     }
 
     public String getPassword() {
-<span class="nc" id="L79">        return password;</span>
+<span class="fc" id="L82">        return password;</span>
     }
 
     public void setPassword(String password) {
-<span class="nc" id="L83">        this.password = password;</span>
-<span class="nc" id="L84">    }</span>
+<span class="fc" id="L86">        this.password = password;</span>
+<span class="fc" id="L87">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L88">        return &quot;User{&quot; +</span>
+<span class="fc" id="L91">        return &quot;User{&quot; +</span>
                 &quot;id=&quot; + id +
                 &quot;, name='&quot; + name + '\'' +
                 &quot;, username='&quot; + username + '\'' +
