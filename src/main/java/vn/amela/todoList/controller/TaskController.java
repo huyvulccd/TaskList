@@ -17,7 +17,7 @@ import java.util.*;
 @RequestMapping("tasks")
 public class TaskController {
     @Autowired
-    private TaskService service;
+    TaskService service;
 
     private Search search;
     private int currentPageRedirect = 0;
@@ -25,7 +25,6 @@ public class TaskController {
     @GetMapping("")
     public String getListTasks(Model model, @RequestParam("page") Optional<Integer> page) {
         if (Process.getCurrentUsername().isEmpty()) {
-
             return "redirect:/";// check
         }
 

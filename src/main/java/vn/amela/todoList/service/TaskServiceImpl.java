@@ -20,14 +20,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
     @Autowired
-    private TaskMapper taskMapper;
+    TaskMapper taskMapper;
 
     @Override
     public List<Task> getListTasksByCondition(int status, String keyword) {// trả về list theo điều kiện
         if (status == 0){
             return taskMapper.selectAllById_userAndTitleContaining(Process.getID_User(),keyword);
         }
-        return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(),keyword,status);
+        return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(), keyword, status);
     }
     @Override
     public void postTask(Task task) {

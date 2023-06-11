@@ -256,6 +256,7 @@ class HomeControllerTest {
 
         Authentication auth = mock(Authentication.class);
         when(auth.getPrincipal()).thenReturn("anonymousUser");
+
         Process.notificationError = false;
         SecurityContext securityContext = mock(SecurityContext.class);
         when(securityContext.getAuthentication()).thenReturn(auth);
@@ -307,7 +308,6 @@ class HomeControllerTest {
                 return "anonymousUser";
             }
         };
-
     }
 
     private Object buildUserDetails(boolean flg) {

@@ -20,59 +20,59 @@ import java.util.List;
 @RequiredArgsConstructor
 <span class="fc" id="L21">public class TaskServiceImpl implements TaskService {</span>
     @Autowired
-    private TaskMapper taskMapper;
+    TaskMapper taskMapper;
 
     @Override
     public List&lt;Task&gt; getListTasksByCondition(int status, String keyword) {// tráº£ vá»� list theo Ä‘iá»�u kiá»‡n
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (status == 0){</span>
-<span class="nc" id="L28">            return taskMapper.selectAllById_userAndTitleContaining(Process.getID_User(),keyword);</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (status == 0){</span>
+<span class="fc" id="L28">            return taskMapper.selectAllById_userAndTitleContaining(Process.getID_User(),keyword);</span>
         }
-<span class="nc" id="L30">        return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(),keyword,status);</span>
+<span class="fc" id="L30">        return taskMapper.selectAllById_userAndTitleContainingAndStatus(Process.getID_User(), keyword, status);</span>
     }
     @Override
     public void postTask(Task task) {
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (task.getTitle().isEmpty())</span>
-<span class="nc" id="L35">            return;</span>
-<span class="nc" id="L36">        List&lt;Task&gt; tasks = taskMapper.selectAll();</span>
-<span class="nc" id="L37">        int tasksLength = tasks.size();</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (tasksLength==0){</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (task.getTitle().isEmpty())</span>
+<span class="fc" id="L35">            return;</span>
+<span class="fc" id="L36">        List&lt;Task&gt; tasks = taskMapper.selectAll();</span>
+<span class="fc" id="L37">        int tasksLength = tasks.size();</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (tasksLength==0){</span>
 <span class="nc" id="L39">            task.setId(1L); // náº¿u list trá»‘ng thÃ¬ +1</span>
         }else{
-<span class="nc" id="L41">            task.setId(tasks.get(tasksLength-1).getId()+1); // láº¥y id pháº§n tá»­ cuá»‘i sau Ä‘Ã³ +1 vÃ o id má»›i</span>
+<span class="fc" id="L41">            task.setId(tasks.get(tasksLength-1).getId()+1); // láº¥y id pháº§n tá»­ cuá»‘i sau Ä‘Ã³ +1 vÃ o id má»›i</span>
         }
-<span class="nc" id="L43">        task.setStatus(1);</span>
+<span class="fc" id="L43">        task.setStatus(1);</span>
 <span class="nc" id="L44">        task.setId_user(Process.getID_User());</span>
 <span class="nc" id="L45">        taskMapper.creatTask(task);</span>
 <span class="nc" id="L46">    }</span>
 
     @Override
     public void updateTask(Task task) {
-<span class="nc" id="L50">        taskMapper.updateTask(task);</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L50">        taskMapper.updateTask(task);</span>
+<span class="fc" id="L51">    }</span>
 
     @Override
     public void deleteTask(Long id) {
-<span class="nc" id="L55">        taskMapper.deleteById(id);</span>
-<span class="nc" id="L56">    }</span>
+<span class="fc" id="L55">        taskMapper.deleteById(id);</span>
+<span class="fc" id="L56">    }</span>
 
     public List&lt;Task&gt; findTasksByPaginated(int pageable, int status, String keyword) {
-<span class="nc" id="L59">        List&lt;Task&gt; tasks = getListTasksByCondition(status, keyword);</span>
-<span class="nc" id="L60">        int length = tasks.size();</span>
-<span class="nc" id="L61">        return tasks.subList((pageable - 1) * 10, Math.min(pageable * 10, length));</span>
+<span class="fc" id="L59">        List&lt;Task&gt; tasks = getListTasksByCondition(status, keyword);</span>
+<span class="fc" id="L60">        int length = tasks.size();</span>
+<span class="fc" id="L61">        return tasks.subList((pageable - 1) * 10, Math.min(pageable * 10, length));</span>
     }
     @Override
     public void ExportCSV(Writer writer) {
-<span class="nc" id="L65">        List&lt;Task&gt; tasks = getListTasksByCondition(Search.status, Search.title);</span>
+<span class="fc" id="L65">        List&lt;Task&gt; tasks = getListTasksByCondition(Search.status, Search.title);</span>
 
-<span class="nc" id="L67">        try (CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {</span>
+<span class="fc" id="L67">        try (CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {</span>
 
-<span class="nc" id="L69">            csvPrinter.printRecord(&quot;Title&quot;, &quot;Content&quot;, &quot;Status&quot;);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">            for (Task task: tasks) {</span>
+<span class="fc" id="L69">            csvPrinter.printRecord(&quot;Title&quot;, &quot;Content&quot;, &quot;Status&quot;);</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            for (Task task: tasks) {</span>
 <span class="nc bnc" id="L71" title="All 4 branches missed.">                csvPrinter.printRecord(task.getTitle(), task.getContent(), task.getStatus()==1 ? &quot;Open&quot; : task.getStatus() ==2 ? &quot;Doing&quot; : &quot;Done&quot;);</span>
 <span class="nc" id="L72">            }</span>
 <span class="nc" id="L73">        } catch (IOException e) {</span>
-<span class="nc" id="L74">        }</span>
-<span class="nc" id="L75">    }</span>
+<span class="fc" id="L74">        }</span>
+<span class="fc" id="L75">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

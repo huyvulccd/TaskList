@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan(basePackages = {"vn.amela.todoList.mapper"})
 public class TodoListApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(TodoListApplication.class, args);
 	}

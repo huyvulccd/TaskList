@@ -10,7 +10,7 @@ import java.security.Principal;
 <span class="fc" id="L10">    public static String msgError = &quot;&quot;;</span>
 <span class="fc" id="L11">    public static boolean notificationError = false;</span>
     public static Long getID_User(){
-<span class="nc" id="L13">        return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId_User();</span>
+<span class="fc" id="L13">        return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId_User();</span>
     }
     public static String getCurrentUsername(){
 <span class="fc" id="L16">        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span>
