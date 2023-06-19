@@ -10,50 +10,50 @@ import vn.amela.todoList.model.User;
 
 @Controller
 @RequestMapping(&quot;&quot;)
-<span class="fc" id="L13">public class HomeController {</span>
+<span class="nc" id="L13">public class HomeController {</span>
 
     @GetMapping(&quot;&quot;)
     public String redirectLoginPage() {
-<span class="fc" id="L17">        Search.resetFilter();</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (!Process.getCurrentUsername().isEmpty()){</span>
-<span class="fc" id="L19">            return &quot;redirect:/tasks&quot;;</span>
+<span class="nc" id="L17">        Search.resetFilter();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()){</span>
+<span class="nc" id="L19">            return &quot;redirect:/tasks&quot;;</span>
         }
-<span class="fc" id="L21">        return &quot;redirect:login&quot;;</span>
+<span class="nc" id="L21">        return &quot;redirect:login&quot;;</span>
     }
 
     @GetMapping(&quot;login&quot;)
     public String loginPage(Model model) {
-<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
-<span class="fc" id="L27">            Search.resetFilter();</span>
-<span class="fc" id="L28">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L27">            Search.resetFilter();</span>
+<span class="nc" id="L28">            return &quot;redirect:/tasks/?page=1&quot;;</span>
         }
-<span class="fc" id="L30">        model.addAttribute(&quot;user&quot;, new User());</span>
-<span class="fc" id="L31">        return &quot;Login.html&quot;;</span>
+<span class="nc" id="L30">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc" id="L31">        return &quot;Login.html&quot;;</span>
     }
 
     @GetMapping(&quot;/login/false&quot;)
     public String loginPageFalse(Model model) {
-<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
-<span class="fc" id="L37">            Search.resetFilter();</span>
-<span class="fc" id="L38">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L37">            Search.resetFilter();</span>
+<span class="nc" id="L38">            return &quot;redirect:/tasks/?page=1&quot;;</span>
         }
 
-<span class="fc" id="L41">        model.addAttribute(&quot;user&quot;, new User());</span>
-<span class="fc" id="L42">        model.addAttribute(&quot;errRes&quot;, &quot;Login failed! Wrong username or password.&quot;);</span>
-<span class="fc" id="L43">        return &quot;Login.html&quot;;</span>
+<span class="nc" id="L41">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc" id="L42">        model.addAttribute(&quot;errRes&quot;, &quot;Login failed! Wrong username or password.&quot;);</span>
+<span class="nc" id="L43">        return &quot;Login.html&quot;;</span>
     }
 
     @GetMapping(&quot;register&quot;)
     public String registerPage(Model model) {
-<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
-<span class="fc" id="L49">            Search.resetFilter();</span>
-<span class="fc" id="L50">            return &quot;redirect:/tasks/?page=1&quot;;</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (!Process.getCurrentUsername().isEmpty()) {</span>
+<span class="nc" id="L49">            Search.resetFilter();</span>
+<span class="nc" id="L50">            return &quot;redirect:/tasks/?page=1&quot;;</span>
         }
-<span class="fc" id="L52">        model.addAttribute(&quot;user&quot;, new User());</span>
-<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (Process.notificationError)</span>
-<span class="fc" id="L54">            model.addAttribute(&quot;msgError&quot;, Process.msgError);</span>
-<span class="fc" id="L55">        Process.notificationError = false;</span>
-<span class="fc" id="L56">        return &quot;Register.html&quot;;</span>
+<span class="nc" id="L52">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (Process.notificationError)</span>
+<span class="nc" id="L54">            model.addAttribute(&quot;msgError&quot;, Process.msgError);</span>
+<span class="nc" id="L55">        Process.notificationError = false;</span>
+<span class="nc" id="L56">        return &quot;Register.html&quot;;</span>
 
     }
 }

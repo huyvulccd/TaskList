@@ -1,0 +1,3 @@
+A sc 123 123 false
+admin admin@gmail.com !2QWEasd !2QWEasd true
+admin adminroot 123456 123456 false

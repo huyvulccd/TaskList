@@ -1,0 +1,2 @@
+dummylogin 123456 http://localhost:8080/login/false
+admintest 123456 http://localhost:8080/tasks

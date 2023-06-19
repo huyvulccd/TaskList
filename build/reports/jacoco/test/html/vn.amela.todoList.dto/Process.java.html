@@ -7,20 +7,20 @@ import vn.amela.todoList.model.User;
 import java.security.Principal;
 
 <span class="nc" id="L9">public class Process {</span>
-<span class="fc" id="L10">    public static String msgError = &quot;&quot;;</span>
-<span class="fc" id="L11">    public static boolean notificationError = false;</span>
+<span class="nc" id="L10">    public static String msgError = &quot;&quot;;</span>
+<span class="nc" id="L11">    public static boolean notificationError = false;</span>
     public static Long getID_User(){
-<span class="fc" id="L13">        return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId_User();</span>
+<span class="nc" id="L13">        return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId_User();</span>
     }
     public static String getCurrentUsername(){
-<span class="fc" id="L16">        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span>
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (principal instanceof UserDetails) {</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">            return ((UserDetails) principal).getUsername().compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : ((UserDetails) principal).getUsername();</span>
+<span class="nc" id="L16">        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (principal instanceof UserDetails) {</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">            return ((UserDetails) principal).getUsername().compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : ((UserDetails) principal).getUsername();</span>
         }
-<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (principal instanceof Principal) {</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">            return ((Principal) principal).getName().compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : ((Principal) principal).getName();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (principal instanceof Principal) {</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            return ((Principal) principal).getName().compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : ((Principal) principal).getName();</span>
         }
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        return String.valueOf(principal).compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : String.valueOf(principal);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        return String.valueOf(principal).compareTo(&quot;anonymousUser&quot;) == 0 ? &quot;&quot; : String.valueOf(principal);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

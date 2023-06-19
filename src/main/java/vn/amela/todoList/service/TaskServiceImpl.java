@@ -13,6 +13,7 @@ import vn.amela.todoList.dto.Process;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
@@ -34,11 +35,12 @@ public class TaskServiceImpl implements TaskService {
         if (task.getTitle().isEmpty())
             return;
         List<Task> tasks = taskMapper.selectAll();
+
         int tasksLength = tasks.size();
-        if (tasksLength==0){
+        if (tasksLength == 0){
             task.setId(1L); // nếu list trống thì +1
-        }else{
-            task.setId(tasks.get(tasksLength-1).getId()+1); // lấy id phần tử cuối sau đó +1 vào id mới
+        } else {
+            task.setId(tasks.stream().map(Task::getId).max(Comparator.naturalOrder()).get() + 1); // lấy id phần tử cuối sau đó +1 vào id mới
         }
         task.setStatus(1);
         task.setId_user(Process.getID_User());
